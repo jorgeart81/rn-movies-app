@@ -1,1 +1,1 @@
-export * from './movie-db';
+export * from './movie-db.interface';
