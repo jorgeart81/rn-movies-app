@@ -1,11 +1,12 @@
 import { movieApi } from '@/core/api/movie-api';
-import { MDBPNowPlayingResponse } from '@/infrastructure/interfaces';
+import type { MDBPNowPlayingResponse, Movie } from '@/infrastructure/interfaces';
+import { MovieMapper } from '@/infrastructure/mappers';
 
-export const nowPlayingAction = async () => {
+export const nowPlayingAction = async (): Promise<Movie[]> => {
   try {
     const { data } = await movieApi.get<MDBPNowPlayingResponse>('/now_playing');
-    console.log(JSON.stringify(data, null, 2));
-    return [];
+    const movies = [...data.results].map(MovieMapper.fromTheMovieDBToMovie);
+    return movies;
   } catch (error) {
     console.log(error);
     throw 'Cannot load now playing movies';
