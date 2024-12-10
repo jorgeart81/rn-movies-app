@@ -14,9 +14,8 @@ const HomeScreen = () => {
   }
 
   return (
-    <View>
-      <Text>HomeScreen</Text>
-      <Text>{JSON.stringify(nowPlayingQuery.data)}</Text>
+    <View className='flex-1 pt-2 bg-slate-50'>
+      <Text className='text-3xl font-bold px-4 mb-2 color-slate-800'>HomeScreen</Text>
     </View>
   );
 };
