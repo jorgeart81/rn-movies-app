@@ -7,6 +7,7 @@ export const useMovies = () => {
   const nowPlayingQuery = useQuery({
     queryKey: ['movies', 'nowPlaying'],
     queryFn: nowPlayingAction,
+    staleTime: 86400000, // 24 hours -> 1000 * 60 * 60 * 24
   });
 
   return {
