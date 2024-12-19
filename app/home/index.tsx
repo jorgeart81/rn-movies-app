@@ -1,11 +1,12 @@
-import { View, Text, ActivityIndicator } from 'react-native';
+import { ActivityIndicator, ScrollView, Text, View } from 'react-native';
 
 import { useMovies } from '@/presentation/hooks/useMovies';
 import { MainSlideShow } from '@/presentation/components';
 import MovieHorizontalList from '@/presentation/components/movies/MovieHorizontalList';
 
 const HomeScreen = () => {
-  const { nowPlayingQuery, popularQuery } = useMovies();
+  const { nowPlayingQuery, popularQuery, topRatedQuery, upcomingQuery } =
+    useMovies();
 
   if (nowPlayingQuery.isLoading) {
     return (
@@ -16,15 +17,34 @@ const HomeScreen = () => {
   }
 
   return (
-    <View className='flex-1 pt-2 bg-slate-50'>
-      <Text className='text-3xl font-bold px-4 mb-2 color-slate-800'>
-        Movies App
-      </Text>
-      <MainSlideShow movies={nowPlayingQuery.data ?? []} />
+    <ScrollView>
+      <View className='flex-1 pt-2 mb-3 bg-slate-50'>
+        <Text className='text-3xl font-bold px-4 mb-2 color-slate-800'>
+          Movies App
+        </Text>
+        <MainSlideShow movies={nowPlayingQuery.data ?? []} />
 
-      {/* Popular movies */}
-      <MovieHorizontalList title='Populares' movies={popularQuery.data ?? []} />
-    </View>
+        <View className='gap-5'>
+          {/* Popular movies */}
+          <MovieHorizontalList
+            title='Populares'
+            movies={popularQuery.data ?? []}
+          />
+
+          {/* Top rated movies */}
+          <MovieHorizontalList
+            title='Mejor calificadas'
+            movies={topRatedQuery.data ?? []}
+          />
+
+          {/* Upcoming movies */}
+          <MovieHorizontalList
+            title='Próximanente en cines'
+            movies={upcomingQuery.data ?? []}
+          />
+        </View>
+      </View>
+    </ScrollView>
   );
 };
 

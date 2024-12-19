@@ -1,12 +1,14 @@
 export interface MDBResponse {
-  page:          number;
-  results:       Result[];
-  total_pages:   number;
+  page: number;
+  results: Result[];
+  total_pages: number;
   total_results: number;
 }
 export interface MDBNowPlayingResponse extends MDBResponse {
-  dates:         Dates;
+  dates: Dates;
 }
+
+export interface MDBUpcomingResponse extends MDBNowPlayingResponse {}
 
 export interface Dates {
   maximum: Date;
@@ -14,25 +16,25 @@ export interface Dates {
 }
 
 export interface Result {
-  adult:             boolean;
-  backdrop_path:     string;
-  genre_ids:         number[];
-  id:                number;
+  adult: boolean;
+  backdrop_path: string;
+  genre_ids: number[];
+  id: number;
   original_language: OriginalLanguage;
-  original_title:    string;
-  overview:          string;
-  popularity:        number;
-  poster_path:       string;
-  release_date:      Date;
-  title:             string;
-  video:             boolean;
-  vote_average:      number;
-  vote_count:        number;
+  original_title: string;
+  overview: string;
+  popularity: number;
+  poster_path: string;
+  release_date: Date;
+  title: string;
+  video: boolean;
+  vote_average: number;
+  vote_count: number;
 }
 
 export enum OriginalLanguage {
-  En = "en",
-  Es = "es",
-  Fr = "fr",
-  Hi = "hi",
+  En = 'en',
+  Es = 'es',
+  Fr = 'fr',
+  Hi = 'hi',
 }
