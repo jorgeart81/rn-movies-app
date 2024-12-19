@@ -1,9 +1,11 @@
-export interface MDBPNowPlayingResponse {
-  dates:         Dates;
+export interface MDBResponse {
   page:          number;
   results:       Result[];
   total_pages:   number;
   total_results: number;
+}
+export interface MDBNowPlayingResponse extends MDBResponse {
+  dates:         Dates;
 }
 
 export interface Dates {
@@ -30,6 +32,7 @@ export interface Result {
 
 export enum OriginalLanguage {
   En = "en",
+  Es = "es",
   Fr = "fr",
   Hi = "hi",
 }

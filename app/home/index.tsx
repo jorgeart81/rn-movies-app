@@ -1,10 +1,11 @@
 import { View, Text, ActivityIndicator } from 'react-native';
 
-import { useMovies } from '@/presentation/hooks';
+import { useMovies } from '@/presentation/hooks/useMovies';
 import { MainSlideShow } from '@/presentation/components';
+import MovieHorizontalList from '@/presentation/components/movies/MovieHorizontalList';
 
 const HomeScreen = () => {
-  const { nowPlayingQuery } = useMovies();
+  const { nowPlayingQuery, popularQuery } = useMovies();
 
   if (nowPlayingQuery.isLoading) {
     return (
@@ -19,7 +20,10 @@ const HomeScreen = () => {
       <Text className='text-3xl font-bold px-4 mb-2 color-slate-800'>
         Movies App
       </Text>
-      {nowPlayingQuery.data && <MainSlideShow movies={nowPlayingQuery.data} />}
+      <MainSlideShow movies={nowPlayingQuery.data ?? []} />
+
+      {/* Popular movies */}
+      <MovieHorizontalList title='Populares' movies={popularQuery.data ?? []} />
     </View>
   );
 };
