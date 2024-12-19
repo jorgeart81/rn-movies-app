@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import {
   FlatList,
   NativeScrollEvent,
@@ -19,6 +19,17 @@ interface Props {
 
 const MovieHorizontalList = ({ movies, title, loadNextPage }: Props) => {
   const isLoading = useRef(false);
+  let timeout: NodeJS.Timeout;
+
+  useEffect(() => {
+    timeout = setTimeout(() => {
+      isLoading.current = false;
+    }, 200);
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [movies]);
 
   const onScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
     if (isLoading.current) return;
@@ -50,7 +61,7 @@ const MovieHorizontalList = ({ movies, title, loadNextPage }: Props) => {
         horizontal
         showsHorizontalScrollIndicator={false}
         data={movies}
-        keyExtractor={(item) => item.id.toString()}
+        keyExtractor={(item, index) => `${item.id} - ${index}`}
         renderItem={({ item }) => (
           <MoviePoster id={item.id} poster={item.poster} smallPoster />
         )}

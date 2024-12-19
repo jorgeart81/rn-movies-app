@@ -2,9 +2,19 @@ import { movieApi } from '@/core/api/movie-api';
 import type { MDBResponse, Movie } from '@/infrastructure/interfaces';
 import { MovieMapper } from '@/infrastructure/mappers';
 
-export const topRatedAction = async (): Promise<Movie[]> => {
+interface Options {
+  limit?: number;
+  page?: number;
+}
+
+export const topRatedAction = async ({
+  page = 1,
+  limit = 10,
+}: Options): Promise<Movie[]> => {
   try {
-    const { data } = await movieApi.get<MDBResponse>('/top_rated');
+    const { data } = await movieApi.get<MDBResponse>('/top_rated', {
+      params: { page },
+    });
     const movies = [...data.results].map(MovieMapper.fromTheMovieDBToMovie);
     return movies;
   } catch (error) {
