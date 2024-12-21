@@ -1,5 +1,6 @@
 import { Image, Pressable, Text, View } from 'react-native';
 
+import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
 import { router } from 'expo-router';
 
@@ -18,9 +19,19 @@ const MovieHeader = ({
   title,
   onLoad,
 }: Props) => {
-  
   return (
     <>
+      <LinearGradient
+        colors={['rgba(0,0,0,0.3)', 'transparent']}
+        start={[0, 0]}
+        style={{
+          position: 'absolute',
+          height: screenHeight * 0.4,
+          width: '100%',
+          zIndex: 1,
+        }}
+      />
+
       <View
         style={{
           position: 'absolute',

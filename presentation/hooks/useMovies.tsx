@@ -23,7 +23,6 @@ export const useMovies = () => {
     initialPageParam: 1,
     queryKey: ['movies', 'topRated'],
     queryFn: ({ pageParam }) => {
-      console.log({ pageParam });
       return topRatedAction({ page: pageParam });
     },
     staleTime: 86400000, // 24 hours -> 1000 * 60 * 60 * 24
