@@ -6,7 +6,7 @@ import { MDBUpcomingResponse } from '../../../infrastructure/interfaces/movie-db
 export const upcomingAction = async (): Promise<Movie[]> => {
   try {
     const { data } = await movieApi.get<MDBUpcomingResponse>('/upcoming');
-    const movies = [...data.results].map(MovieMapper.fromTheMovieDBToMovie);
+    const movies = [...data.results].map(MovieMapper.fromTheMDBToMovie);
     return movies;
   } catch (error) {
     console.log(error);

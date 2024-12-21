@@ -15,7 +15,7 @@ export const topRatedAction = async ({
     const { data } = await movieApi.get<MDBResponse>('/top_rated', {
       params: { page },
     });
-    const movies = [...data.results].map(MovieMapper.fromTheMovieDBToMovie);
+    const movies = [...data.results].map(MovieMapper.fromTheMDBToMovie);
     return movies;
   } catch (error) {
     console.log(error);
