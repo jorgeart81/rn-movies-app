@@ -33,7 +33,7 @@ const MovieDescription = ({ movie }: Props) => {
         data={creditsQuery.data}
         keyExtractor={(item, index) => `${item.id} - ${index}`}
         renderItem={({ item }) => (
-          <View className='flex gap-2'>
+          <View key={item.id} className='flex gap-2'>
             <MoviePoster id={item.id} poster={item.avatar} smallPoster />
             {Formatter.splitName(item.name).map((value) => (
               <Text className='font-bold mx-2'>{value}</Text>
