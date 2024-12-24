@@ -9,6 +9,7 @@ import {
 
 import MovieHeader from '@/presentation/components/movie/MovieHeader';
 import { useMovie } from '@/presentation/hooks/useMovie';
+import MovieDescription from '@/presentation/components/movie/MovieDescription';
 
 const MovieScreen = () => {
   const { height: screenHeight } = useWindowDimensions();
@@ -33,6 +34,7 @@ const MovieScreen = () => {
         orginalTitle={originalTitle}
         screenHeight={screenHeight}
       />
+      <MovieDescription movie={detailsQuery.data} />
     </ScrollView>
   );
 };
