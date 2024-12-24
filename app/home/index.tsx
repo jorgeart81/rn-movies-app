@@ -21,7 +21,7 @@ const HomeScreen = () => {
 
   return (
     <ScrollView className='flex-1' style={{ paddingTop: safeArea.top}}>
-      <View className='flex-1 pt-2 mb-3 bg-slate-50'>
+      <View className='flex-1 pt-2 mb-5 bg-slate-50'>
         <Text className='text-3xl font-bold px-4 mb-2 color-slate-800'>
           Movies App
         </Text>

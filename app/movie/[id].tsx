@@ -27,7 +27,7 @@ const MovieScreen = () => {
 
   const { poster, title, originalTitle } = detailsQuery.data;
   return (
-    <ScrollView>
+    <ScrollView className='mb-5'>
       <MovieHeader
         image={poster}
         title={title}

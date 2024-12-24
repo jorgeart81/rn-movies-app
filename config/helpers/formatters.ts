@@ -5,4 +5,8 @@ export class Formatter {
       currency: 'USD',
     }).format(value);
   }
+
+  public static splitName(value: string) {
+    return value.split(' ');
+  }
 }
